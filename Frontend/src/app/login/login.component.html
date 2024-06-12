@@ -1,0 +1,56 @@
+<main class="body">
+   <div class="container mh-100">
+      <div class="row g-0 bg-white rounded-4 shadow-lg align-content-center mh-100">
+         <div class="col-lg-6 col-md-6 text-right mh-100">
+            <aside class="ms-auto h-100 rounded-start-4 mobile-rounded  gr2  p-lg-cstm text-center vcenter-hcenter">
+               <img src="https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_1280.jpg" class="whiteStoke" alt="" />
+            </aside>
+         </div>
+         <div class="col-lg-6 col-md-6 align-self-start align-self-md-start">
+            <div class="RightBlock row px-3  py-3 ">
+               <div class="loginCntMiddle align-self-start align-self-md-start text-center px-xl-5 py-xl-5 p-3">
+                  <aside class="loginBlk">
+                     <!-- <div class="loginCntHeader text-center  py-2 mb-5 rounded-3 d-none d-md-block">
+                        <img alt="" src="https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_1280.jpg" class="logo">
+                     </div> -->
+                     <h3 class="text-left mb-3"><strong>Login</strong></h3>
+                     <form novalidate [formGroup]="logdata" (ngSubmit)="onLogin()">
+                     <div class="row g-4">
+                          <div class="col-md-12 col-12 ">
+                            <div class="form-group ">
+                                <label for="loginmobile">Enter Email<span
+                                  class="text-danger font-weight-bold">*</span></label>
+                                <input type="text" id="loginmobile" name="loginmobile" class="form-control "
+                                 required autocomplete="off" formControlName="Email" (keyup)="clearfunction()"  placeholder=" Enter Mobile">
+                               
+                            </div>
+                          </div>
+                          <div class="col-md-12 col-12 ">
+                            <div class="form-group">
+                              <label for="Password">Enter Password<span
+                                  class="text-danger font-weight-bold">*</span></label>
+                              <input type="Password" id="Password" name="Password" class="form-control"
+                                  required autocomplete="off"   formControlName="Password" placeholder="Enter Password" (keyup)="clearfunction()">
+                            
+                             
+                            </div>
+                            
+                        </div>
+                        
+                        <h6 class="text-danger text-center" *ngIf="show_log_error!=''" > {{show_log_error}} </h6>
+                        <div class="text-center col-12">
+                          <button type="submit" class="btn btn-primary rounded-pill-OFF shadow btn-block   w-100"
+                            [disabled]="!logdata.valid"  id="login">Login</button> <br>
+                          
+                        </div>
+                        <a routerLink="/register" class="mt-4 d-block already-account-link">Don't Have An Account?</a>
+
+                     </div>
+                     </form>
+                  </aside>
+               </div>
+            </div>
+         </div> 
+      </div>
+   </div>
+</main>

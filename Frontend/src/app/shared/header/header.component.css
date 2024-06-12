@@ -1,0 +1,22 @@
+.dropdown-menu {
+    padding: 0;
+}
+
+.dropdown-menu .dropdown-header {
+    padding: 1rem;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+}
+
+.dropdown-menu .dropdown-divider {
+    margin: 0;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Adjust alignment for dropdown menu */
+.dropdown-menu.dropdown-menu-end {
+    left: auto;
+    right: 0;
+}
