@@ -11,10 +11,6 @@ export class TasksComponent {
   selectedDate:string='';
   TaskData:any = [];
   ShowData:number=0;
-  UpdateDate:any;
-  Updatetitle:any;
-  Updatedesc:any;
-  UpdatePro:any
   Id: any[] = [];
     constructor(private CreateTaskService: CreateTaskService, private router: Router,private fb: FormBuilder) {
   }
