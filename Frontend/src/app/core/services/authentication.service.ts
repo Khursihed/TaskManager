@@ -14,7 +14,7 @@ export class AuthenticationService {
  // ************************ Login Api ****************** 
   register(obj: any): Observable<any> { 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this._http.post<any>(`${NodeApi}/auth/register`, obj, {headers}) 
+    return this._http.post<any>(`${NodeApi}/auth/register`, obj) 
   }  
   user_login(obj: any): Observable<any> { 
     return this._http.post<any>(`${NodeApi}/auth/login`, obj) 

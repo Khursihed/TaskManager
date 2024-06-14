@@ -12,7 +12,7 @@ router.post('/register', async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, 10);
   const user = new User({ username, email, password: hashedPassword });
   await user.save();
-  res.status(201).send('User registered');
+  res.status(201).json({Message:'User registered'});
 });
 
 // Login route

@@ -18,4 +18,7 @@ export class CreateTaskService {
     console.log(`${NodeApi}/GetTask/`+Id)
     return this._http.get<any>(`${NodeApi}/GetTask/`+Id)
   }
+  UpdateTask(Id:any, Obj:any):Observable<any>{
+    return this._http.put<any>(`${NodeApi}/UpdateTask/${Id}`, Obj)
+  }
 }

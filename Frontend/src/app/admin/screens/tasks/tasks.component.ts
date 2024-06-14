@@ -10,9 +10,16 @@ import { CreateTaskService } from '../../../core/services/createtask.service';
 export class TasksComponent {
   selectedDate:string='';
   TaskData:any = [];
-  constructor(private CreateTaskService: CreateTaskService, private router: Router,private fb: FormBuilder) {
+  ShowData:number=0;
+  UpdateDate:any;
+  Updatetitle:any;
+  Updatedesc:any;
+  UpdatePro:any
+  Id: any[] = [];
+    constructor(private CreateTaskService: CreateTaskService, private router: Router,private fb: FormBuilder) {
   }
   GetTaskByDate(){
+    this.ShowData = 0
     console.log(this.selectedDate);
     this.CreateTaskService.GetTaskById(this.selectedDate).subscribe(responsed =>{
       console.log(responsed)
@@ -20,5 +27,32 @@ export class TasksComponent {
      
      
     })
+  }
+  Edit(Data:any){
+
+    this.ShowData = 1;
+    
+    this.Id.push(Data)
+    console.log(this.Id)
+
+  }
+  UpdateData(){
+    this.ShowData = 1;
+console.log(this.Id[0]._id)
+    var obj ={
+      "title": this.Id[0].title,
+      "description": this.Id[0].description,
+      "dueDate": this.Id[0].dueDate,
+      "priority": this.Id[0].priority
+    }
+    console.log(obj)
+   if(confirm('Can I Update The Data Admin!')){
+    this.CreateTaskService.UpdateTask(this.Id[0]._id,obj).subscribe(res=>{
+      console.log(res)
+      
+    })
+   }else{
+    return
+   }
   }
 }

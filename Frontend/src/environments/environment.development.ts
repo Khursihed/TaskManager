@@ -3,6 +3,6 @@ export const environment = {
 };
   
 export const NodeApi = 'http://192.168.1.3:5000/api';
-// export const NodeApiLogin = 'http://192.168.1.3:8000';
+// export const NodeApiLogin = 'http://192.168.208.232:8000';
 
 
