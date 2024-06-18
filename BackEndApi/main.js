@@ -26,6 +26,41 @@ app.use('/api/tasks', require('./routes/tasks'));
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+// app.get('/api/getData', async(req, res)=>{
+ 
+//   try{
+//     const { title, description, dueDate, priority } = req.query;
+//     console.log('Query Parameters:', { title, description, dueDate, priority });
+//     const filter = {};
+//     console.log(filter)
+//     if (title) filter.title = title;
+//     if (description) filter.description = description;
+//     if (dueDate) {
+//       // Parse dueDate if provided
+//       const parsedDueDate = moment.utc(dueDate, 'YYYY-MM-DD').startOf('day').toDate();
+//       filter.dueDate = parsedDueDate;
+//     }
+//     if (priority) filter.priority = priority;
+   
+//     const Data = await Task.find(filter);
+//     console.log('Retrieved Tasks:', Data);
+//     if (Data.length === 0) {
+//       return res.status(404).json({ message: 'No Data Found!' });
+//     } 
+//     return res.status(200).json(Data);
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// })
+app.get('/api/getData', async(req,res)=>{
+  try{
+    const allTask = await Task.find({});
+    return res.status(200).json(allTask)
+  }catch(error){
+    return res.status(500).json({error:'Internal Server Error'})
+  }
+})
 app.post('/api/createTask', async(req, res)=>{
     const {title,description,dueDate,priority} = req.body;
     const task = new Task({title,description,dueDate,priority });
