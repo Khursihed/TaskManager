@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { TasksComponent } from './screens/tasks/tasks.component';
+import { GetAllTasksComponent } from './screens/get-all-tasks/get-all-tasks.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { TasksComponent } from './screens/tasks/tasks.component';
         ScreensComponent,
         DashboardComponent,
         CreateTaskComponent,
-        TasksComponent
+        TasksComponent,
+        GetAllTasksComponent
     ],
     imports: [
         CommonModule,

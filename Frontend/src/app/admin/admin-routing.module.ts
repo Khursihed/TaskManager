@@ -5,6 +5,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ScreensComponent } from './screens/screens.component';
 import { CreateTaskComponent } from './screens/create-task/create-task.component';
 import { TasksComponent } from './screens/tasks/tasks.component';
+import { GetAllTasksComponent } from './screens/get-all-tasks/get-all-tasks.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path:'task',
         component: TasksComponent
+      },
+      {
+        path:'alltask',
+        component:GetAllTasksComponent
       }
     ],
     

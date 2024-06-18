@@ -1,0 +1,38 @@
+<main id="main" class="main">
+    <section class="section">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><strong>Tasks</strong>| <span>Today</span></h5>
+            <!-- Table with stripped rows -->
+            <table class="table table-striped" >
+              <thead>
+                <tr>
+                  <th scope="col">S.No</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let x of Alltask;let i = index">
+                  <th scope="row">{{i + 1}}</th>
+                  <td style="white-space: nowrap;">{{x.dueDate | date: 'dd-MM-yyyy'}}</td>
+                  <td>{{x.title}}</td>
+                  <td style="max-width:10%;">{{x.description}}</td>
+                  <td>{{x.priority}}</td>
+                  
+                </tr>
+  
+              </tbody>
+            </table>
+          
+            <!-- End Table with stripped rows -->
+            
+           
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
