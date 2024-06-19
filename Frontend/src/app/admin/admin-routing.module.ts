@@ -6,6 +6,7 @@ import { ScreensComponent } from './screens/screens.component';
 import { CreateTaskComponent } from './screens/create-task/create-task.component';
 import { TasksComponent } from './screens/tasks/tasks.component';
 import { GetAllTasksComponent } from './screens/get-all-tasks/get-all-tasks.component';
+import { CreateUserComponent } from './screens/create-user/create-user.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path:'alltask',
         component:GetAllTasksComponent
+      },
+      {
+        path:'user',
+        component:CreateUserComponent
       }
     ],
     

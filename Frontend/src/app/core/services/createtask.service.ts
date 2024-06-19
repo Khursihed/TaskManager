@@ -12,11 +12,11 @@ export class CreateTaskService {
   constructor(private readonly _http: HttpClient, private readonly _router: Router) { }
   CreateTask(obj:any):Observable<any>{
     
-    return this._http.post<any>(`${NodeApi}/createTask`, obj)
+    return this._http.post<any>(`${NodeApi}/CreateTask`, obj)
   }
   GetTaskById(Id:any):Observable<any>{
-    console.log(`${NodeApi}/GetTask/`+Id)
-    return this._http.get<any>(`${NodeApi}/GetTask/`+Id)
+    console.log(`${NodeApi}/GetByDate/`+Id)
+    return this._http.get<any>(`${NodeApi}/GetByDate/`+Id)
   }
   UpdateTask(Id:any, Obj:any):Observable<any>{
     return this._http.put<any>(`${NodeApi}/UpdateTask/${Id}`, Obj)

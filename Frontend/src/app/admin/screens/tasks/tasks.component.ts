@@ -19,7 +19,7 @@ export class TasksComponent {
     console.log(this.selectedDate);
     this.CreateTaskService.GetTaskById(this.selectedDate).subscribe(responsed =>{
       console.log(responsed)
-      this.TaskData = responsed[0]
+      this.TaskData = responsed
      
      
     })

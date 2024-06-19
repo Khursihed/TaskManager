@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { ReactiveFormsModule } from '@angular/forms';
 import { TasksComponent } from './screens/tasks/tasks.component';
 import { GetAllTasksComponent } from './screens/get-all-tasks/get-all-tasks.component';
+import { CreateUserComponent } from './screens/create-user/create-user.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { GetAllTasksComponent } from './screens/get-all-tasks/get-all-tasks.comp
         DashboardComponent,
         CreateTaskComponent,
         TasksComponent,
-        GetAllTasksComponent
+        GetAllTasksComponent,
+        CreateUserComponent
     ],
     imports: [
         CommonModule,
