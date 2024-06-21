@@ -64,4 +64,7 @@ console.log(this.Id[0]._id)
         return
       }
     }
+    Back(){
+      history.back()
+    }
 }
