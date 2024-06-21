@@ -19,6 +19,7 @@
                 <th scope="col">Description</th>
                 <th scope="col">Priority</th>
                 <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -29,6 +30,8 @@
                 <td style="max-width:10%;">{{x.description}}</td>
                 <td>{{x.priority}}</td>
                 <td class="text-danger" (click)="Edit(x)" style="cursor: pointer;"><i class="bi bi-pencil-square"></i>
+                </td>
+                <td class="text-danger" (click)="Delete(x._id)" style="cursor: pointer;"><i class="bi bi-trash text-danger"></i>
                 </td>
               </tr>
 

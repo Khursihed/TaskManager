@@ -67,6 +67,30 @@ app.get('/api/GetByDate/:dueDate', async(req, res)=>{
     res.status(500).json({error:'Internal Server Error'})
   }
 })
+app.delete('/api/Delete/:id', async (req, res) => {
+  console.log('DELETE request received for ID:', req.params.id); // Debug log
+
+  try {
+    const { id } = req.params;
+
+
+ 
+    const getid = await Task.findById(id);
+    console.log(getid)
+    if (!getid) {
+      return res.status(404).json({ error: 'No data found for this ID' });
+    }
+
+
+    await Task.findByIdAndDelete(id);
+
+    res.status(201).json({ message: 'Task successfully deleted', getid });
+  } catch (error) {
+    console.error('Error deleting task:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 // Update Task Route
 app.put('/api/UpdateTask/:id', async (req, res) => {
   try {

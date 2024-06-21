@@ -21,4 +21,8 @@ export class CreateTaskService {
   UpdateTask(Id:any, Obj:any):Observable<any>{
     return this._http.put<any>(`${NodeApi}/UpdateTask/${Id}`, Obj)
   }
+  DeleteTaskById(Id:any):Observable<any>{
+    console.log(`${NodeApi}/Delete/`+Id)
+    return this._http.delete<any>(`${NodeApi}/Delete/`+Id)
+  }
 }
