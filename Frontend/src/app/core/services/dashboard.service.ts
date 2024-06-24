@@ -13,5 +13,7 @@ export class DashboardService {
   get_data():Observable<any>{
     return this._http.get<any>(`${NodeApi}/employees/getemp`)
   }
-
+  GetTasks():Observable<any>{
+    return this._http.get<any>(`${NodeApi}/getData`)
+  }
 }

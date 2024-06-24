@@ -51,14 +51,14 @@ console.log(this.Id[0]._id)
     return
    }
   }
-  Delete(x:string){
+  Delete(x:any){
     console.log(x)
 
     if(confirm('Are You Sure To Delete The Data Of This Task?'))
       {
         this.CreateTaskService.DeleteTaskById(x).subscribe(rsponse =>{
           console.log(rsponse)
-          location.reload()
+          location.reload();
         })
       }else{
         return

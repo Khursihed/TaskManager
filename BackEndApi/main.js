@@ -7,6 +7,7 @@ const Task = require('./models/Task'); // Mongoose model
 const authMiddleware = require('./middleware/auth');
 const moment = require('moment');
 const bodyParser = require('body-parser');
+const { get } = require('mongoose');
 
 const app = express();
 
@@ -46,7 +47,10 @@ app.post('/api/CreateTask', async(req, res)=>{
 app.get('/api/getData', async(req,res)=>{
   try{
     const allTask = await Task.find({});
-    return res.status(200).json(allTask)
+   
+    const FinalTask = allTask.sort(function(a,b){return b.dueDate - a.dueDate})
+    // console.log(FinalTask)
+    return res.status(200).json(FinalTask)
   }catch(error){
     return res.status(500).json({error:'Internal Server Error'})
   }
@@ -72,16 +76,11 @@ app.delete('/api/Delete/:id', async (req, res) => {
 
   try {
     const { id } = req.params;
-
-
- 
     const getid = await Task.findById(id);
     console.log(getid)
     if (!getid) {
       return res.status(404).json({ error: 'No data found for this ID' });
     }
-
-
     await Task.findByIdAndDelete(id);
 
     res.status(201).json({ message: 'Task successfully deleted', getid });
@@ -92,38 +91,55 @@ app.delete('/api/Delete/:id', async (req, res) => {
 });
 
 // Update Task Route
-app.put('/api/UpdateTask/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { title, description, dueDate, priority } = req.body;
 
-    // Validate the input
-    if (!id || !title || !description || !dueDate || !priority) {
-      return res.status(400).json({ error: 'All fields are required' });
-    }
+app.put('/api/UpdateTask/:id', async(req, res)=>{
+try{
+  const {id} = req.params;
 
-    // Parse dueDate
-    const parsedDueDate = moment.utc(dueDate, 'YYYY-MM-DD').startOf('day').toDate();
-
-    // Find and update the task
-    const updatedTask = await Task.findByIdAndUpdate(
-      id,
-      { title, description, dueDate: parsedDueDate, priority },
-      { new: true, runValidators: true }
-    );
-
-    // Check if the task was found and updated
-    if (!updatedTask) {
-      return res.status(404).json({ error: 'Task not found' });
-    }
-
-    // Send the updated task as a response
-    res.status(200).json({ message: 'Task updated successfully', task: updatedTask });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
+  const UpdateId =  await Task.findById(id);
+  if(!id){
+    res.status(404).json({error:'No Data Found'})
   }
-});
+  await Task.findByIdAndUpdate(id)
+  res.status(200).json({message:'Data Updated Successfully', UpdateId})
+}catch(error){
+  res.status(500).json({error:'Intrenal Server Error'})
+}
+
+})
+
+// app.put('/api/UpdateTask/:id', async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const { title, description, dueDate, priority } = req.body;
+
+//     // Validate the input
+//     if (!id || !title || !description || !dueDate || !priority) {
+//       return res.status(400).json({ error: 'All fields are required' });
+//     }
+
+//     // Parse dueDate
+//     const parsedDueDate = moment.utc(dueDate, 'YYYY-MM-DD').startOf('day').toDate();
+
+//     // Find and update the task
+//     const updatedTask = await Task.findByIdAndUpdate(
+//       id,
+//       { title, description, dueDate: parsedDueDate, priority },
+//       { new: true, runValidators: true }
+//     );
+
+//     // Check if the task was found and updated
+//     if (!updatedTask) {
+//       return res.status(404).json({ error: 'Task not found' });
+//     }
+
+//     // Send the updated task as a response
+//     res.status(200).json({ message: 'Task updated successfully', task: updatedTask });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Internal server error' });
+//   }
+// });
 
 
 const PORT = process.env.PORT || 5000;

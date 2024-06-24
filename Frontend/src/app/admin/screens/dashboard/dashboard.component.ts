@@ -8,13 +8,27 @@ import { FormBuilder } from '@angular/forms';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  UsersData:any=[]
+  UsersData:any=[];
+  Alltask:any = [];
+  lowPriorityTasks: any[]=[];
+  MediumPriorityTasks: any[]=[];
+  HighPriorityTasks: any[]=[];
+
   constructor(private dashboard: DashboardService, private router: Router, private fb: FormBuilder) {
   }
   ngOnInit(){
-    this.dashboard.get_data().subscribe(response =>{
-      console.log(response)
-      this.UsersData = response
+   
+    this.dashboard.GetTasks().subscribe(response =>{
+      // console.log(response)
+      this.Alltask = response;
+      var Task=0
+    
+       this.lowPriorityTasks = this.Alltask.filter((task: { priority: string; }) => task.priority === 'Low');
+       this.MediumPriorityTasks = this.Alltask.filter((task: { priority: string; }) => task.priority === 'Medium');
+       this.HighPriorityTasks = this.Alltask.filter((task: { priority: string; }) => task.priority === 'High');
+console.log(this.HighPriorityTasks.length)
+      
+      
     })
   }
 }

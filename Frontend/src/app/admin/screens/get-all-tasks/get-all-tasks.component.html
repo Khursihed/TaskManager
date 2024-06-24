@@ -20,7 +20,9 @@
                   <th scope="row">{{i + 1}}</th>
                   <td style="white-space: nowrap;">{{x.dueDate | date: 'dd-MM-yyyy'}}</td>
                   <td>{{x.title}}</td>
-                  <td style="max-width:10%;">{{x.description}}</td>
+                  <td style="white-space: nowrap; text-overflow: ellipsis;">
+                    {{x.description}}
+                  </td>
                   <td>{{x.priority}}</td>
                   
                 </tr>

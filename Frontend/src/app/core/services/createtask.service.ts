@@ -23,6 +23,6 @@ export class CreateTaskService {
   }
   DeleteTaskById(Id:any):Observable<any>{
     console.log(`${NodeApi}/Delete/`+Id)
-    return this._http.delete<any>(`${NodeApi}/Delete/`+Id)
+    return this._http.delete<any>(`${NodeApi}/Delete/${Id}`)
   }
 }
